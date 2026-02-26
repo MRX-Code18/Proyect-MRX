@@ -101,53 +101,7 @@ background-color: inherit;
 .container.toggle .sign-up{
     transform: translateX(0%);
 }
-/* --- ESTO VA AL FINAL DEL ARCHIVO --- */
 
-@media (max-width: 768px) {
-    body {
-        height: auto; 
-        padding: 20px 0;
-        /* Quitamos el borde rojo para que se vea limpio en el cel */
-        border: none; 
-    }
-
-    .container {
-        width: 90%;      
-        height: auto;    
-        min-height: 500px;
-        margin: 20px auto;
-    }
-
-    .container-form {
-        width: 100%;
-        padding: 40px 10px;
-    }
-
-    .container-input {
-        width: 90%; /* Se adapta mejor al ancho del celular */
-    }
-
-    /* En móvil, el panel verde estorba, así que lo ocultamos */
-    .container-welcome {
-        display: none; 
-    }
-
-    /* Ajuste para que los formularios no se encimen en móvil */
-    .sign-up {
-        position: absolute;
-        width: 100%;
-        top: 0;
-    }
-
-    .container.toggle .sign-in {
-        display: none; /* Oculta uno mientras el otro está activo */
-    }
-
-    .container.toggle .sign-up {
-        position: relative;
-        transform: translateX(0%);
-    }
-}
 /*bien venido*/
 .container-welcome{
     position: absolute;
@@ -195,4 +149,53 @@ background-color: inherit;
 }
 .container.toggle .welcome-sign-up{
     transform: translateX(-100%);
+}
+/* --- AJUSTE FINAL PARA MÓVIL --- */
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        padding: 20px;
+        border: none; /* Quitamos el borde rojo para que no estorbe */
+    }
+
+    .container {
+        width: 100%; /* Que use todo el ancho del cel */
+        height: auto;
+        min-height: 550px;
+        display: block; /* Cambiamos flex por block para evitar encimamientos */
+    }
+
+    /* OCULTAMOS el panel verde en móvil para que no tape el formulario */
+    .container-welcome {
+        display: none; 
+    }
+
+    .container-form {
+        width: 100%; /* El formulario ahora ocupa todo el ancho */
+        position: relative;
+    }
+
+    /* Ajustamos los inputs para que no se vean tan pegados */
+    .container-input {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Reseteamos las transformaciones para que el formulario no se salga de la pantalla */
+    .sign-in, .sign-up {
+        transform: none !important; 
+        position: relative;
+        padding: 30px 0;
+    }
+
+    /* Si estás usando la clase .toggle para cambiar entre formularios, 
+       podemos hacer que uno se oculte y el otro se muestre */
+    .container.toggle .sign-in {
+        display: none;
+    }
+    
+    .container:not(.toggle) .sign-up {
+        display: none;
+    }
 }
